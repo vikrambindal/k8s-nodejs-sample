@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: adjective-service
+spec:
+  type: NodePort
+  selector:
+    app: adjective
+  ports:
+  - port: 4000
+    targetPort: 4000
