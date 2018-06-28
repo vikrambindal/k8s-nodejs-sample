@@ -7,10 +7,10 @@ const propertiesreader = require('properties-reader');
 const config = require('./config');
 
 const ADJECTIVE = process.env.ADJECTIVE || config.ADJECTIVE;
-const ARTICLE = process.env.ARTICLE || propertiesreader('./application-minikube.properties').get('ARTICLE');
-const NOUN = process.env.NOUN || propertiesreader('./application-minikube.properties').get('NOUN');
-const SUBJECT = process.env.SUBJECT || propertiesreader('./application-minikube.properties').get('SUBJECT');
-const VERB = process.env.VERB || propertiesreader('./application-minikube.properties').get('VERB');
+const ARTICLE = process.env.ARTICLE || config.ARTICLE;
+const NOUN = process.env.NOUN || config.NOUN;
+const SUBJECT = process.env.SUBJECT || config.SUBJECT;
+const VERB = process.env.VERB || config.VERB;
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/sentence', async (req, res) => {
-    console.log('Constructing sentence' , ADJECTIVE);
+    console.log('Constructing sentence');
 
     var adjectiveRes = await request(ADJECTIVE);
     var articleRes = await request(ARTICLE);
